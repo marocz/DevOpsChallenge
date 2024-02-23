@@ -3,7 +3,7 @@ name: Service 1 (CI)
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, mro/precommit ]
   pull_request:
     branches: [ main ]
 
