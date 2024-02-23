@@ -137,7 +137,7 @@ cargo test
 You will be seeing the following in your terminal:
 
 ```shell
-❯ cargo test                   
+❯ cargo test
    Compiling service2 v0.1.0 (/PATH/TO/service1)
     Finished test [unoptimized + debuginfo] target(s) in 0.72s
      Running unittests src/main.rs (target/debug/deps/service1-acf545c943eedeb7)

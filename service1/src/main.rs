@@ -54,12 +54,12 @@ mod tests {
     #[actix_rt::test]
     async fn test_hello() {
         let mut app = test::init_service(App::new().service(hello)).await;
-        
+
         let req = TestRequest::get().uri("/").to_request();
         let resp = test::call_service(&mut app, req).await;
 
         assert_eq!(resp.status(), actix_web::http::StatusCode::OK);
-        
+
         let body = test::read_body(resp).await;
         assert_eq!(body, "Hello world in service 1!");
     }
