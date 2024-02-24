@@ -43,4 +43,4 @@ jobs:
         sudo apt-get install kubectl
         chmod +x ./service1/scripts/gcloud.sh
         ./service1/scripts/gcloud.sh
-        kubectl apply -f ./service1/scripts/k8s.yaml
+        kubectl apply -f ./service1/kube/k8s.yaml
