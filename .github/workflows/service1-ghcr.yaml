@@ -33,12 +33,21 @@ jobs:
         username: ${{ secrets.DOCKER_HUB_USERNAME }}
         password: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Build and push Docker image
+    - name: Build and push Docker image (Dev)
       uses: docker/build-push-action@v2
       with:
         context: ./service1
         file: ./service1/docker/Dockerfile.dev
         push: true
         tags: |
-          ghcr.io/marocz/devopschallenge:service1-${{ github.sha }}
-          ghcr.io/marocz/devopschallenge:service1-latest
+          ghcr.io/marocz/devopschallenge:service1-dev-${{ github.sha }}
+          ghcr.io/marocz/devopschallenge:service1-dev-latest
+    - name: Build and push Docker image (Prod)
+      uses: docker/build-push-action@v2
+      with:
+        context: ./service1
+        file: ./service1/docker/Dockerfile.prod
+        push: true
+        tags: |
+          ghcr.io/marocz/devopschallenge:service1-prod-${{ github.sha }}
+          ghcr.io/marocz/devopschallenge:service1-prodlatest
