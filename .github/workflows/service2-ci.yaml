@@ -19,3 +19,19 @@ jobs:
       run: pip install pre-commit
     - name: Run pre-commit
       run: pre-commit run --all-files
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Rust
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+        profile: minimal
+        override: true
+    - name: Lint with Clippy
+      run: cargo clippy -- -D warnings
+      working-directory: service1
+    - name: Run tests
+      run: cargo test
+      working-directory: service1

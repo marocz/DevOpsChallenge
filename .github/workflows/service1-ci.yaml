@@ -29,11 +29,6 @@ jobs:
         toolchain: stable
         profile: minimal
         override: true
-    - name: List directories
-      run: |
-        pwd
-        ls -l
-        ls -l service1/
     - name: Lint with Clippy
       run: cargo clippy -- -D warnings
       working-directory: service1
