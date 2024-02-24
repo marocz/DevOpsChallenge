@@ -10,3 +10,6 @@ coverage:
   status:
     project: yes
     patch: yes
+ignore:
+  - "service1/codecov.yaml"
+  - "service2/codecov.yaml"
