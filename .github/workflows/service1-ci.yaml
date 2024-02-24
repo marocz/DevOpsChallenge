@@ -35,3 +35,9 @@ jobs:
     - name: Run tests
       run: cargo test
       working-directory: service1
+    - name: Upload coverage reports to Codecov
+      uses: codecov/codecov-action@v4.0.1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        slug: marocz/DevOpsChallenge
+        yml: service1/codecov.yaml
