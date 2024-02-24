@@ -211,4 +211,8 @@ Based on the machine type (`e2-medium`) and cluster configuration (5 nodes), her
 
 This estimate provides a baseline for the monthly operational costs of running a standard GKE cluster with five e2-medium nodes in the us-central1 region. For precise billing and potential discounts or additional network and storage costs, consult the GCP billing dashboard or the [Google Cloud Pricing Calculator](https://cloud.google.com/products/calculator).
 
+## Challenges
+- The service 2 returns no responds so pong return a Service is not available. I exec into the pod and made a request to the base url and got a response.
+- Spinning up GKE cluster requires some cost estimation as i needed to add my details sinc ei used up my 300 bucks, lol (Not an issue though)
+
 ---
