@@ -41,6 +41,7 @@ jobs:
         GCP_ZONE: ${{ secrets.GCP_ZONE }}
       run: |
         sudo apt-get install kubectl
+        gcloud components install gke-gcloud-auth-plugin
         chmod +x ./service1/scripts/gcloud.sh
         ./service1/scripts/gcloud.sh
         kubectl apply -f ./service1/kube/k8.yaml
