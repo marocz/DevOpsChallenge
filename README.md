@@ -193,6 +193,8 @@ The services can be accessed directly via their URLs. Note that these URLs point
 - **Development URLs** are for testing and development purposes. Features in these environments are not final and may change.
 - **Production URLs** are stable and reflect the services offered to end-users.
 
+## Cluster Estimated Cost Report
+
 Based on the machine type (`e2-medium`) and cluster configuration (5 nodes), here's a mini cost report:
 
 **GKE Cluster Cost Report**
