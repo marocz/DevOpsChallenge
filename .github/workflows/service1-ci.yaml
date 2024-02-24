@@ -48,4 +48,4 @@ jobs:
         token: ${{ secrets.CODECOV_TOKEN }}
         slug: marocz/DevOpsChallenge
         file: ./cobertura.xml
-        yml: service1/codecov.yaml
+        codecov_yml_path: service1/codecov.yml
