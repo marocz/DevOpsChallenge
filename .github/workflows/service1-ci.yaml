@@ -30,7 +30,7 @@ jobs:
         override: true
     - name: Lint with Clippy
       run: cargo clippy -- -D warnings
-      working-directory: ./service1
+      working-directory: service1
     - name: Run tests
       run: cargo test
-      working-directory: ./service1
+      working-directory: service1
