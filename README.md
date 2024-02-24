@@ -193,4 +193,20 @@ The services can be accessed directly via their URLs. Note that these URLs point
 - **Development URLs** are for testing and development purposes. Features in these environments are not final and may change.
 - **Production URLs** are stable and reflect the services offered to end-users.
 
+Based on the machine type (`e2-medium`) and cluster configuration (5 nodes), here's a mini cost report:
+
+**GKE Cluster Cost Report**
+
+- **Machine Type**: e2-medium (2 vCPUs, 4 GB memory)
+- **Region**: us-central1
+- **Hourly Cost per Node**: $0.0335
+- **Monthly Cost per Node**: $24.46
+- **Total Nodes in Cluster**: 5
+
+**Monthly Cluster Cost Estimate**:
+- **Total Hourly Cost**: $0.0335 * 5 = $0.1675
+- **Total Monthly Cost**: $24.46 * 5 = $122.30
+
+This estimate provides a baseline for the monthly operational costs of running a standard GKE cluster with five e2-medium nodes in the us-central1 region. For precise billing and potential discounts or additional network and storage costs, consult the GCP billing dashboard or the [Google Cloud Pricing Calculator](https://cloud.google.com/products/calculator).
+
 ---
