@@ -1,1 +1,14 @@
 # Write the dependabot for rust, cargo, and other stuf you might think of 😎
+version: 2
+updates:
+  - package-ecosystem: "cargo"
+    directory: "/service1" # Path relative to the repository root
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: "cargo"
+    directory: "/service2" # Path relative to the repository root
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5

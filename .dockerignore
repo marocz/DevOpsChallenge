@@ -1,1 +1,11 @@
 # Write the list of the ignore modules/dirs
+.git
+.gitignore
+node_modules
+target
+tests
+Dockerfile.dev
+Dockerfile.prod
+*.md
+!important.md
+tmp/
