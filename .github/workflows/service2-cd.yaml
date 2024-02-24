@@ -22,3 +22,26 @@ jobs:
       run: pip install pre-commit
     - name: Run pre-commit
       run: pre-commit run --all-files
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup Google Cloud SDK
+      uses: google-github-actions/setup-gcloud@v0.2.0
+      with:
+        project_id: ${{ secrets.GCP_PROJECT }}
+        service_account_key: ${{ secrets.GKE_CRED }}
+        export_default_credentials: true
+    - name: Authenticate to GKE and Deploy
+      env:
+        GKE_CRED: ${{ secrets.GKE_CRED }}
+        GCP_PROJECT: ${{ secrets.GCP_PROJECT }}
+        GKE_SA: ${{ secrets.GKE_SA }}
+        GKE_CLUSTER: ${{ secrets.GKE_CLUSTER }}
+        GCP_ZONE: ${{ secrets.GCP_ZONE }}
+      run: |
+        sudo apt-get install kubectl
+        gcloud components install gke-gcloud-auth-plugin
+        chmod +x ./service2/scripts/gcloud.sh
+        ./service2/scripts/gcloud.sh
+        kubectl apply -f ./service2/kube/k8.yaml

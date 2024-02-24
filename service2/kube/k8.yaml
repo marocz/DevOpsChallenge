@@ -1,1 +1,129 @@
 # Write your Kubernetes settings here
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dev
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: prod
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service2-app-dev
+  namespace: dev
+  labels:
+    app: service2-dev
+    environment: dev
+    tier: frontend
+    track: stable
+spec:
+  selector:
+    matchLabels:
+      app: service2-dev
+      name: service2-app-dev
+      track: stable
+  template:
+    metadata:
+      labels:
+        app:  service2-dev
+        name: service2-app-dev
+        track: stable
+    spec:
+      terminationGracePeriodSeconds: 60
+      imagePullSecrets:
+        - name: ghcr-credentials
+      containers:
+      - name: service1-app-dev
+        image: ghcr.io/marocz/devopschallenge:service2-dev-latest
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 8081
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "0.5"
+          limits:
+            memory: "500Mi"
+        env:
+          # Add your environment variables here
+      imagePullSecrets:
+        - name: ghcr-credentials
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service2-app-prod
+  namespace: prod
+  labels:
+    app: service2-prod
+    environment: prod
+    tier: frontend
+    track: stable
+spec:
+  selector:
+    matchLabels:
+      app: service2-prod
+      name: service2-app-prod
+      track: stable
+  template:
+    metadata:
+      labels:
+        app:  service2-prod
+        name: service2-app-prod
+        track: stable
+    spec:
+      terminationGracePeriodSeconds: 60
+      imagePullSecrets:
+        - name: ghcr-credentials
+      containers:
+      - name: service2-app-prod
+        image: ghcr.io/marocz/devopschallenge:service2-prod-latest
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 8081
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "0.5"
+          limits:
+            memory: "500Mi"
+        env:
+          # Add your environment variables here
+      imagePullSecrets:
+        - name: ghcr-credentials
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service2-dev-svc
+  namespace: dev
+spec:
+  ports:
+    - nodePort: 30104
+      port: 8081
+      targetPort: 8081
+      protocol: TCP
+  type: NodePort
+  selector:
+    app:  service2-dev
+    name: service2-app-dev
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service2-prod-svc
+  namespace: prod
+spec:
+  ports:
+    - nodePort: 30103
+      port: 8081
+      targetPort: 8081
+      protocol: TCP
+  type: NodePort
+  selector:
+    app:  service2-prod
+    name: service2-app-prod
