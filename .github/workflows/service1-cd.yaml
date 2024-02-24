@@ -41,5 +41,6 @@ jobs:
         GCP_ZONE: ${{ secrets.GCP_ZONE }}
       run: |
         sudo apt-get install kubectl
+        chmod +x ./service1/scripts/gcloud.sh
         ./service1/scripts/gcloud.sh
         kubectl apply -f ./service1/scripts/k8s.yaml
