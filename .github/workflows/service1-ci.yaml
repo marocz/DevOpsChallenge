@@ -37,6 +37,7 @@ jobs:
 
     - name: Generate coverage report
       run: cargo tarpaulin --out Xml
+      working-directory: service1
 
     - name: Run tests
       run: cargo test
