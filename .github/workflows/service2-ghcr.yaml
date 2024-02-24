@@ -3,7 +3,7 @@ name: Service 2 (GHCR)
 
 on:
   push:
-    branches: [ main, mro/precommit ]
+    branches: [ main, develop ]
   pull_request:
     branches: [ main ]
 
