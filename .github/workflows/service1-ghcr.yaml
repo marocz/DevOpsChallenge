@@ -40,5 +40,5 @@ jobs:
         file: ./service1/docker/Dockerfile.dev
         push: true
         tags: |
-          marocz/DevOpsChallenge:${{ github.sha }}
-          marocz/DevOpsChallenge:latest
+          marocz/devopschallenge:${{ github.sha }}
+          marocz/devopschallenge:latest
