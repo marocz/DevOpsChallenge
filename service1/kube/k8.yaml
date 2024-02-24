@@ -119,7 +119,7 @@ metadata:
   namespace: prod
 spec:
   ports:
-    - nodePort: 30100
+    - nodePort: 30101
       port: 8080
       targetPort: 8080
       protocol: TCP
