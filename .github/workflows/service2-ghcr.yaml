@@ -1,11 +1,14 @@
 # Write the pipeline to send the dockerized image to GHCR
-name: Service 1 (GHCR)
+name: Service 2 (GHCR)
 
 on:
-  push:
-    branches: [ main, develop ]
   pull_request:
     branches: [ main ]
+  workflow_dispatch:
+    branches:
+    - main
+    - develop
+    - prod
 
 jobs:
   pre-commit:
@@ -50,4 +53,4 @@ jobs:
         push: true
         tags: |
           ghcr.io/marocz/devopschallenge:service2-prod-${{ github.sha }}
-          ghcr.io/marocz/devopschallenge:service2-prodlatest
+          ghcr.io/marocz/devopschallenge:service2-prod-latest

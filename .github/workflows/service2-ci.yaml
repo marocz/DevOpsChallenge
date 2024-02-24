@@ -2,10 +2,13 @@
 name: Service 2 (CI)
 
 on:
-  push:
-    branches: [ main, develop ]
   pull_request:
     branches: [ main ]
+  workflow_dispatch:
+    branches:
+    - main
+    - develop
+    - prod
 
 jobs:
   pre-commit:

@@ -2,10 +2,13 @@
 name: Service 1 (GHCR)
 
 on:
-  push:
-    branches: [ main, develop ]
   pull_request:
     branches: [ main ]
+  workflow_dispatch:
+    branches:
+    - main
+    - develop
+    - prod
 
 jobs:
   pre-commit:
@@ -50,4 +53,4 @@ jobs:
         push: true
         tags: |
           ghcr.io/marocz/devopschallenge:service1-prod-${{ github.sha }}
-          ghcr.io/marocz/devopschallenge:service1-prodlatest
+          ghcr.io/marocz/devopschallenge:service1-prod-latest

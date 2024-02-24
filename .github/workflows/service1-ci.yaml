@@ -2,10 +2,13 @@
 name: Service 1 (CI)
 
 on:
-  push:
-    branches: [ main, develop ]
   pull_request:
     branches: [ main ]
+  workflow_dispatch:
+    branches:
+    - main
+    - develop
+    - prod
 
 jobs:
   pre-commit:
@@ -34,11 +37,9 @@ jobs:
       working-directory: service1
     - name: Install cargo-tarpaulin
       run: cargo install cargo-tarpaulin
-
     - name: Generate coverage report
       run: cargo tarpaulin --out Xml
       working-directory: service1
-
     - name: Run tests
       run: cargo test
       working-directory: service1
