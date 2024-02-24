@@ -43,6 +43,6 @@ jobs:
         GKE_SA: ${{ secrets.GKE_SA }}
         GKE_CLUSTER: ${{ secrets.GKE_CLUSTER }}
         GCP_ZONE: ${{ secrets.GCP_ZONE }}
-        run: |
-          ./service1/scripts/gcloud.sh
-          kubectl apply -f ./service1/scripts/k8s.yaml
+      run: |
+        ./service1/scripts/gcloud.sh
+        kubectl apply -f ./service1/scripts/k8s.yaml
