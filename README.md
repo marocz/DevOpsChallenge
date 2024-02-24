@@ -154,4 +154,43 @@ I hope you can enjoy the challenge since these kind of tasks will be your bread 
 
 Happy engineering!
 
+# Services Overview
+
+This document provides an overview of the development and production environments for Service1 and Service2. Each service is accessible via specific URLs mapped to external IP addresses and ports. Below is the detailed information regarding the URLs for each environment and service.
+
+## Development Environment
+
+### Service1 Dev
+
+- **URL**: [http://34.69.221.201:30100/](http://34.69.221.201:30100/)
+
+  Service1 in the development environment is designed for testing new features and updates before they are deployed to production. This environment is subject to frequent changes and updates as part of the development process.
+
+### Service2 Dev
+
+- **URL**: [http://35.192.189.98:30104/](http://35.192.189.98:30104/)
+
+  Service2 in the development environment mirrors the setup of Service1 Dev, providing a platform for development and testing. It's crucial for integrating and testing interactions between Service1 and Service2 in a simulated production-like environment.
+
+## Production Environment
+
+### Service 1 Prod
+
+- **URL**: [http://34.31.9.37:30101/](http://34.31.9.37:30101/)
+
+  Service1 in the production environment is the live version used by end-users. This environment is optimized for stability and performance, with updates carefully rolled out to ensure uninterrupted service.
+
+### Service 2 Prod
+
+- **URL**: [http://34.41.166.20:30103/](http://34.41.166.20:30103/)
+
+  Service2 Prod operates alongside Service1 Prod, providing critical services to end-users. Like Service1 Prod, this environment prioritizes reliability and user experience, with changes and updates thoroughly tested before deployment.
+
+## Accessing the Services
+
+The services can be accessed directly via their URLs. Note that these URLs point to external IP addresses and specific ports corresponding to each service and environment. These services are intended for specific use cases:
+
+- **Development URLs** are for testing and development purposes. Features in these environments are not final and may change.
+- **Production URLs** are stable and reflect the services offered to end-users.
+
 ---
