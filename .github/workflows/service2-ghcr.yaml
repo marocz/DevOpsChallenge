@@ -1,5 +1,5 @@
 # Write the pipeline to send the dockerized image to GHCR
-name: Service 2 (GHCR)
+name: Service 1 (GHCR)
 
 on:
   push:
@@ -19,3 +19,35 @@ jobs:
       run: pip install pre-commit
     - name: Run pre-commit
       run: pre-commit run --all-files
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Login to Docker Hub
+      uses: docker/login-action@v1
+      with:
+        registry: ghcr.io
+        username: ${{ secrets.DOCKER_HUB_USERNAME }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Build and push Docker image (Dev)
+      uses: docker/build-push-action@v2
+      with:
+        context: ./service2
+        file: ./service2/docker/Dockerfile.dev
+        push: true
+        tags: |
+          ghcr.io/marocz/devopschallenge:service2-dev-${{ github.sha }}
+          ghcr.io/marocz/devopschallenge:service2-dev-latest
+    - name: Build and push Docker image (Prod)
+      uses: docker/build-push-action@v2
+      with:
+        context: ./service2
+        file: ./service2/docker/Dockerfile.prod
+        push: true
+        tags: |
+          ghcr.io/marocz/devopschallenge:service2-prod-${{ github.sha }}
+          ghcr.io/marocz/devopschallenge:service2-prodlatest
