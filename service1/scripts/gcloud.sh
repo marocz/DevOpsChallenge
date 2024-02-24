@@ -33,4 +33,4 @@ echo "Activating GCloud Service Account Auth using Creds path"
 gcloud auth activate-service-account "$GKE_SA" --key-file="$gke_cred_path"
 echo "Setting GCP Project"
 gcloud config set project ${GCP_PROJECT}
-gcloud container clusters get-credentials $GKE_CLUSTER --zone=$GCP_ZONE
+gcloud container clusters get-credentials "$GKE_CLUSTER" --zone="$GCP_ZONE"
