@@ -2,3 +2,41 @@
 # 2 Stages
 # Build
 # Prod
+
+FROM rust:latest AS base
+
+# Build Stage
+FROM base AS builder
+
+# Create a new empty shell project
+ENV RUSTFLAGS="-C target-feature=-crt-static"
+RUN USER=root cargo new --bin actix_service
+WORKDIR /actix_service
+# Copy our manifests
+COPY ./Cargo.toml ./Cargo.toml
+
+# This step will cache our dependencies
+RUN cargo build --release
+RUN rm src/*.rs
+
+# Now that the dependencies are built, copy your source code
+COPY ./src ./src
+
+
+# Build for release.
+RUN rm ./target/release/deps/service1*
+RUN cargo build --release
+
+# Production Stage
+# FROM debian:buster-slim as development
+FROM base AS production
+
+# Copy the build artifacts from the previous stage
+COPY --from=builder /actix_service/target/release/service1 .
+
+# Expose port 8080 to the outside
+EXPOSE 8080
+
+# Command to run the executable
+CMD ["./service1"]
+# CMD ["ls -al"]

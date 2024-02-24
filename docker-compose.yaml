@@ -1,2 +1,28 @@
 # Write Docker Compose for both Service 1 and 2
 # Include the docker compose YAML file in each service here as well
+version: '3.8'
+services:
+  service1-dev:
+    build:
+      context: ./service1/ # Adjust the context to the project root
+      dockerfile: docker/Dockerfile.dev
+    ports:
+      - "8082:8080"
+  service1-prod:
+    build:
+      context: ./service1/ # Adjust the context to the project root
+      dockerfile: docker/Dockerfile.prod
+    ports:
+      - "8084:8080"
+  service2-dev:
+    build:
+      context: ./service2/ # Adjust the context to the project root
+      dockerfile: docker/Dockerfile.dev
+    ports:
+      - "8083:8081"
+  service2-prod:
+    build:
+      context: ./service2/ # Adjust the context to the project root
+      dockerfile: docker/Dockerfile.prod
+    ports:
+      - "8085:8081"

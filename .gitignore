@@ -1,2 +1,6 @@
 target/
 Cargo.lock
+service1/target
+service2/target
+service1/Cargo.lock
+service2/Cargo.locak

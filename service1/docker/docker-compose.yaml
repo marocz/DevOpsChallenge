@@ -1,1 +1,15 @@
 # Write Docker Compose for Service 1
+version: '3.8'
+services:
+  service1-dev:
+    build:
+      context: ../ # Adjust the context to the project root
+      dockerfile: docker/Dockerfile.dev
+    ports:
+      - "8082:8080"
+  service1-prod:
+    build:
+      context: ../ # Adjust the context to the project root
+      dockerfile: docker/Dockerfile.prod
+    ports:
+      - "8084:8080"
